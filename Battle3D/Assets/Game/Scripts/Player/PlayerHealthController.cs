@@ -20,5 +20,10 @@ public class PlayerHealthController : MonoBehaviour
         SetHealthText(_health);
     }
 
+    public void TakeHealthBox(float heathIncreaseAmount)
+    {
+        _health += heathIncreaseAmount;
+        SetHealthText(_health);
+    }
     private void SetHealthText(float health) => _healthText.SetText(health.ToString());
 }

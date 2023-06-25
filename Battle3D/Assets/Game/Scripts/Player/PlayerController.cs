@@ -7,8 +7,9 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerHealthController _playerHealthController;
     private PlayerAttackController _playerAttackController;
-    private PlayerInput _playerInput;
     private const int _spawnedBulletLayer = 8;
+    private const int _collectableLayer = 9;
+
 
     private void Awake()
     {
@@ -19,27 +20,30 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         EventManager.OnTakeDamage += TakeDamage;
+
     }
 
     private void OnDisable()
     {
         EventManager.OnTakeDamage -= TakeDamage;
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == _spawnedBulletLayer)
         {
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.layer == _collectableLayer)
+        {
+            Destroy(other.gameObject);
+            IInteractable collectable = other.GetComponent<IInteractable>();
+            collectable?.TakeCollectable();
         }
     }
 
-    private void ReloadBullet()
-    {
-        _playerAttackController.Reload();
-    }
-
-    private void TakeDamage(float damage)
-    {
-        _playerHealthController.TakeDamage(damage);
-    }
+    private void ReloadBullet() => _playerAttackController.Reload();
+    private void TakeDamage(float damage) => _playerHealthController.TakeDamage(damage);
+    private void TakeHealthBox(float heathIncreaseAmount) => _playerHealthController.TakeHealthBox(heathIncreaseAmount);
 }
