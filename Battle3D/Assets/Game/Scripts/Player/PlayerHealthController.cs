@@ -23,6 +23,7 @@ public class PlayerHealthController : MonoBehaviour
     public void TakeHealthBox(float heathIncreaseAmount)
     {
         _health += heathIncreaseAmount;
+        ParticleManager.Instance.HealParticle(transform.position);
         SetHealthText(_health);
     }
     private void SetHealthText(float health) => _healthText.SetText(health.ToString());
