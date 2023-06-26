@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,7 @@ public class PlayerAttackController : MonoBehaviour
 {
     [SerializeField] private BulletController _bulletObject;
     [SerializeField] private Transform _bulletSpawnPos;
+    [SerializeField] private TextMeshPro _bulletText;
     private PlayerMovementController _playerMovementController;
     private int _bulletMagazine = 7;
     private bool _isShoot = false;
@@ -17,8 +19,8 @@ public class PlayerAttackController : MonoBehaviour
     {
         _playerMovementController = GetComponent<PlayerMovementController>();
         _playerMovementController.PlayerInput.PlayerMovement.Shoot.started += OnShoot;
+        SetBulletText();
     }
-
 
     private void OnShoot(InputAction.CallbackContext context)
     {
@@ -29,6 +31,7 @@ public class PlayerAttackController : MonoBehaviour
             BulletController bullet = Instantiate(_bulletObject, _bulletSpawnPos.position, Quaternion.identity);
             bullet.Shoot();
             _bulletMagazine -= 1;
+            SetBulletText();
         }
         else
         {
@@ -38,11 +41,14 @@ public class PlayerAttackController : MonoBehaviour
 
     private void NoBullet()
     {
-        ParticleManager.Instance.NoBulletParticle(transform.position + Vector3.up + (2 * Vector3.right));
+        ParticleManager.Instance.NoBulletParticle(transform.position + Vector3.up + (1.2f * Vector3.right));
     }
 
     public void Reload(float bulletAmount)
     {
         _bulletMagazine = (int)bulletAmount;
+       SetBulletText();
     }
+
+    private void SetBulletText() => _bulletText.SetText(_bulletMagazine.ToString());
 }

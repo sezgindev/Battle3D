@@ -27,7 +27,7 @@ public class Collectable : MonoBehaviour, IInteractable
         {
             EventManager.OnTakeHealthBox?.Invoke(_collectableSettings.HealthCollectableHealthAmount);
         }
-        else if (_collectableType == CollectableTypes.HealthBox)
+        else if (_collectableType == CollectableTypes.SpeedBoost)
         {
             EventManager.OnTakeSpeedBoost?.Invoke(_collectableSettings.SpeedoostAmount);
         }

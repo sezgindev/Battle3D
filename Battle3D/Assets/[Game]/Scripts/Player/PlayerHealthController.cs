@@ -11,20 +11,23 @@ public class PlayerHealthController : MonoBehaviour
 
     private void Start()
     {
-        SetHealthText(_health);
+        SetHealt(_health);
     }
 
     public void TakeDamage(float damage)
     {
         _health -= damage;
-        SetHealthText(_health);
+        SetHealt(_health);
     }
 
     public void TakeHealthBox(float heathIncreaseAmount)
     {
         _health += heathIncreaseAmount;
         ParticleManager.Instance.HealParticle(transform.position);
-        SetHealthText(_health);
+        SetHealt(_health);
     }
-    private void SetHealthText(float health) => _healthText.SetText(health.ToString());
+
+    private void SetHealt(float health)
+    {
+    }
 }
