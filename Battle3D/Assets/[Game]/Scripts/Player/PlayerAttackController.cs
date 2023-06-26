@@ -10,7 +10,6 @@ public class PlayerAttackController : MonoBehaviour
     [SerializeField] private Transform _bulletSpawnPos;
     private PlayerMovementController _playerMovementController;
     private int _bulletMagazine = 7;
-    private int _bulletMagazineCapacity = 7;
     private bool _isShoot = false;
     private PlayerInput _playerInput;
 
@@ -29,6 +28,7 @@ public class PlayerAttackController : MonoBehaviour
             if (!_isShoot) return;
             BulletController bullet = Instantiate(_bulletObject, _bulletSpawnPos.position, Quaternion.identity);
             bullet.Shoot();
+            _bulletMagazine -= 1;
         }
         else
         {
@@ -38,11 +38,11 @@ public class PlayerAttackController : MonoBehaviour
 
     private void NoBullet()
     {
-        //throw no bullet text particle
+        ParticleManager.Instance.NoBulletParticle(transform.position + Vector3.up + (2 * Vector3.right));
     }
 
-    public void Reload()
+    public void Reload(float bulletAmount)
     {
-        _bulletMagazine = _bulletMagazineCapacity;
+        _bulletMagazine = (int)bulletAmount;
     }
 }

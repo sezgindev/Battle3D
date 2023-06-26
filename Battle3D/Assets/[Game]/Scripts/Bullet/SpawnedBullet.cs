@@ -22,6 +22,7 @@ public class SpawnedBullet : MonoBehaviour
             _bulletAmount = value;
             SetBulletAmountText();
         }
+        get => _bulletAmount;
     }
 
     private void SetBulletAmountText() => _bulletAmountText.SetText(_bulletAmount.ToString());

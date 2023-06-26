@@ -20,12 +20,14 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         EventManager.OnTakeDamage += TakeDamage;
+        EventManager.OnTakeBullet += ReloadBullet;
 
     }
 
     private void OnDisable()
     {
         EventManager.OnTakeDamage -= TakeDamage;
+        EventManager.OnTakeBullet -= ReloadBullet;
 
     }
 
@@ -43,7 +45,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void ReloadBullet() => _playerAttackController.Reload();
+    private void ReloadBullet(float bulletAmount) => _playerAttackController.Reload(bulletAmount);
     private void TakeDamage(float damage) => _playerHealthController.TakeDamage(damage);
     private void TakeHealthBox(float heathIncreaseAmount) => _playerHealthController.TakeHealthBox(heathIncreaseAmount);
 }

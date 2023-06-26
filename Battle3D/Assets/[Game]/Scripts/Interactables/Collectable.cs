@@ -31,6 +31,10 @@ public class Collectable : MonoBehaviour, IInteractable
         {
             EventManager.OnTakeSpeedBoost?.Invoke(_collectableSettings.SpeedoostAmount);
         }
+        else if (_collectableType == CollectableTypes.Bullet)
+        {
+            EventManager.OnTakeBullet?.Invoke(GetComponent<SpawnedBullet>().BulletAmount);
+        }
     }
 
     private void CountDownToDestroy()
