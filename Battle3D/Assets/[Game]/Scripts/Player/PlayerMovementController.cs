@@ -1,14 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerMovementController : MonoBehaviour
 {
     [SerializeField] private float _playerMovemenetSpeed = 2.0f;
     [SerializeField] private float _rotationFactorPerFrame = 10.0f;
     [SerializeField] private float _dashSpeed = 5.0f;
+    [SerializeField] private Image _dashFillImage;
     private CharacterController _characterController;
     public PlayerInput PlayerInput;
     private Vector2 _currentMovementInput;
@@ -30,7 +33,7 @@ public class PlayerMovementController : MonoBehaviour
         PlayerInput = new PlayerInput();
         _characterController = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
-
+        _dashFillImage.fillAmount = 1;
         PlayerInput.PlayerMovement.Move.started += OnMovementInput;
         PlayerInput.PlayerMovement.Move.canceled += OnMovementInput;
         PlayerInput.PlayerMovement.Move.performed += OnMovementInput;
@@ -53,14 +56,7 @@ public class PlayerMovementController : MonoBehaviour
         HandleAnimation();
         if (_isDash)
         {
-            _characterController.Move(transform.forward * (_dashSpeed * Time.deltaTime));
-            _dashTimer += Time.deltaTime;
-            _dashReUseTimer += Time.deltaTime;
-            if (_dashTimer >= _dashTime)
-            {
-                _dashTimer = 0;
-                _isDash = false;
-            }
+            Dash();
         }
 
         if (_dashReUseTimer > 0.1)
@@ -71,6 +67,21 @@ public class PlayerMovementController : MonoBehaviour
                 _isDashReady = true;
                 _dashReUseTimer = 0;
             }
+        }
+    }
+
+    private void Dash()
+    {
+        _dashFillImage.fillAmount = 0;
+        _dashFillImage.DOFillAmount(1, _dashReUseTime).SetEase(Ease.Linear);
+        _characterController.Move(transform.forward * (_dashSpeed * Time.deltaTime));
+        _dashFillImage.fillAmount = 0;
+        _dashTimer += Time.deltaTime;
+        _dashReUseTimer += Time.deltaTime;
+        if (_dashTimer >= _dashTime)
+        {
+            _dashTimer = 0;
+            _isDash = false;
         }
     }
 
