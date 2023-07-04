@@ -11,8 +11,8 @@ public class PlayerAttackController : MonoBehaviour
     [SerializeField] private Transform _bulletSpawnPos;
     [SerializeField] private TextMeshPro _bulletText;
     private PlayerMovementController _playerMovementController;
-    private int _bulletMagazine = 7;
-    private bool _isShoot = false;
+    private int _bulletMagazine = 10;
+    private bool _isShoot = false; 
     private PlayerInput _playerInput;
 
     private void Awake()
