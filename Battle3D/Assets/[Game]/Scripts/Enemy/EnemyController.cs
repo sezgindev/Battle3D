@@ -6,13 +6,23 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
+    [SerializeField] private BulletController _bulletObject;
+    [SerializeField] private Transform _bulletSpawnPos;
     private NavMeshAgent _agent;
     private Transform _player;
+    private EnemyStates _enemyState;
+
+    private enum EnemyStates
+    {
+        Follow,
+        Attack
+    }
 
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
         _player = FindObjectOfType<PlayerController>().transform;
+        _agent.SetDestination(_player.position);
     }
 
     private void Update()
@@ -22,6 +32,37 @@ public class EnemyController : MonoBehaviour
 
     private void FollowPlayer()
     {
+        transform.LookAt(_player);
         _agent.SetDestination(_player.position);
+        if (_agent.remainingDistance <= 10.0f)
+        {
+            ChangeState(EnemyStates.Attack);
+            _agent.speed = 0;
+        }
+        else
+        {
+            ChangeState(EnemyStates.Follow);
+            _agent.speed = 1;
+        }
+    }
+
+    private void ChangeState(EnemyStates state)
+    {
+        if (_enemyState == state) return;
+        _enemyState = state;
+        if (_enemyState == EnemyStates.Attack)
+        {
+            StartCoroutine(AttackToPlayer());
+        }
+    }
+
+    private IEnumerator AttackToPlayer()
+    {
+        while (true)
+        {
+            BulletController bullet = Instantiate(_bulletObject, _bulletSpawnPos.position, Quaternion.identity);
+            bullet.Shoot();
+            yield return new WaitForSeconds(1.0f);
+        }
     }
 }

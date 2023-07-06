@@ -602,7 +602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c770131569777b84293e50ded11833c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _waveFrequency: 10
+  _waveFrequency: 5
   _enemyPrefab: {fileID: 7939233746281397195, guid: 38f9bd203ce59c349a2e6de9f174bcfd, type: 3}
   _waveSpawnGates:
   - {fileID: 2115101201}

@@ -12,7 +12,7 @@ public class PlayerAttackController : MonoBehaviour
     [SerializeField] private TextMeshPro _bulletText;
     private PlayerMovementController _playerMovementController;
     private int _bulletMagazine = 10;
-    private bool _isShoot = false; 
+    private bool _isShoot = false;
     private PlayerInput _playerInput;
 
     private void Awake()
@@ -29,7 +29,7 @@ public class PlayerAttackController : MonoBehaviour
             _isShoot = context.ReadValueAsButton();
             if (!_isShoot) return;
             BulletController bullet = Instantiate(_bulletObject, _bulletSpawnPos.position, Quaternion.identity);
-            bullet.Shoot();
+            bullet.Shoot(transform);
             _bulletMagazine -= 1;
             SetBulletText();
         }
@@ -47,7 +47,7 @@ public class PlayerAttackController : MonoBehaviour
     public void Reload(float bulletAmount)
     {
         _bulletMagazine = (int)bulletAmount;
-       SetBulletText();
+        SetBulletText();
     }
 
     private void SetBulletText() => _bulletText.SetText(_bulletMagazine.ToString());
