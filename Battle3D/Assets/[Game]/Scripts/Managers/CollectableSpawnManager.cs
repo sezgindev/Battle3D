@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class SpawnManager : MonoBehaviour
+public class CollectableSpawnManager : MonoBehaviour
 {
     [SerializeField] private SpawnedBullet _spawnObjectPrefab;
     [SerializeField] private GameObject _spawnGroundArea;
