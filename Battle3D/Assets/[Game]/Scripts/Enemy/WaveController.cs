@@ -52,7 +52,7 @@ public class WaveController : MonoBehaviour
                 }
             }
 
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(1.0f);
         }
     }
 }

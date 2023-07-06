@@ -42,7 +42,7 @@ public class EnemyController : MonoBehaviour
         else
         {
             ChangeState(EnemyStates.Follow);
-            _agent.speed = 1;
+            _agent.speed = 3;
         }
     }
 
