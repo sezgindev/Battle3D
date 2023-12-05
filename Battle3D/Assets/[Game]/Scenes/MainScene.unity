@@ -1451,7 +1451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waveFrequency: 10
-  _enemyPrefab: {fileID: 7939233746281397195, guid: 38f9bd203ce59c349a2e6de9f174bcfd, type: 3}
+  _enemyPrefab: {fileID: 6390585722972407165, guid: cfeae71083b6c2e40bb2eb7066beba06, type: 3}
   _waveSpawnGates:
   - {fileID: 543450651584923131}
   - {fileID: 1149627675}
@@ -24631,6 +24631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb4d99f56fc31546b46748c1800af69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerSettings: {fileID: 0}
   _playerUICanvas: {fileID: 1484282872}
 --- !u!114 &8296172668972788775
 MonoBehaviour:

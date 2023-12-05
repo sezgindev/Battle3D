@@ -11,6 +11,8 @@ public class PlayerAttackController : MonoBehaviour
     [SerializeField] private Transform _bulletSpawnPos;
     [SerializeField] private TextMeshPro _bulletText;
     private PlayerMovementController _playerMovementController;
+    private PlayerController _playerController;
+    private PlayerSettings _playerSettings;
     private int _bulletMagazine = 10;
     private bool _isShoot = false;
     private PlayerInput _playerInput;
@@ -18,17 +20,20 @@ public class PlayerAttackController : MonoBehaviour
     private void Awake()
     {
         _playerMovementController = GetComponent<PlayerMovementController>();
-        _playerMovementController.PlayerInput.PlayerMovement.Shoot.started += OnShoot;
+        _playerController = GetComponent<PlayerController>();
+        _playerSettings = _playerController.PlayerSettings;
+        _playerMovementController.PlayerInput.PlayerMovement.Shoot.started += Shoot;
         SetBulletText();
     }
 
-    private void OnShoot(InputAction.CallbackContext context)
+    private void Shoot(InputAction.CallbackContext context)
     {
         if (_bulletMagazine > 0)
         {
             _isShoot = context.ReadValueAsButton();
             if (!_isShoot) return;
             BulletController bullet = Instantiate(_bulletObject, _bulletSpawnPos.position, Quaternion.identity);
+            bullet.DamageInit(_playerSettings.BulletDamage);
             bullet.Shoot(transform);
             _bulletMagazine -= 1;
             SetBulletText();

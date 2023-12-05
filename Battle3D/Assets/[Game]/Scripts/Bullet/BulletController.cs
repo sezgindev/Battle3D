@@ -6,11 +6,14 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    [SerializeField] private AttackSettings _attackSettings;
-    private const int _playerLayer = 6;
-    private const int _enemyLayer = 6;
     private Transform _targetTransform;
     private Rigidbody _rb;
+    private float _damage = 0;
+
+    public void DamageInit(float damage)
+    {
+        _damage = damage;
+    }
 
     private void Awake()
     {
@@ -20,16 +23,9 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == _playerLayer)
-        {
-            EventManager.OnTakeDamage?.Invoke(_attackSettings.BulletDamage);
-        }
-
-        if (other.gameObject.layer == _enemyLayer)
-        {
-            EventManager.OnShootEnemy?.Invoke(_attackSettings.BulletDamage);
-            Destroy(gameObject);
-        }
+        IDamageable obj = other.GetComponent<IDamageable>();
+        obj?.TakeDamage(_damage);
+        Destroy(gameObject);
     }
 
     public void Shoot(Transform target = null)
@@ -39,7 +35,6 @@ public class BulletController : MonoBehaviour
             transform.DOLookAt(_targetTransform.transform.position, .0f);
             Vector3 dir = transform.position - _targetTransform.position;
             _rb.AddForce(dir.normalized * -25, ForceMode.Impulse);
-     
         }
         else
         {

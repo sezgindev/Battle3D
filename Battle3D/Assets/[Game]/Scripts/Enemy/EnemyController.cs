@@ -11,6 +11,7 @@ public class EnemyController : MonoBehaviour
     private NavMeshAgent _agent;
     private Transform _player;
     private EnemyStates _enemyState;
+    public EnemySettings EnemySettings;
 
     private enum EnemyStates
     {
@@ -61,6 +62,7 @@ public class EnemyController : MonoBehaviour
         while (true)
         {
             BulletController bullet = Instantiate(_bulletObject, _bulletSpawnPos.position, Quaternion.identity);
+            bullet.DamageInit(EnemySettings.Damage);
             bullet.Shoot();
             yield return new WaitForSeconds(1.0f);
         }

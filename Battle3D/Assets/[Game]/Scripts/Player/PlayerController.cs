@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable
 {
     private PlayerHealthController _playerHealthController;
     private PlayerAttackController _playerAttackController;
-    private const int _spawnedBulletLayer = 8;
-    private const int _collectableLayer = 9;
+    public PlayerSettings PlayerSettings;
     private Camera _mainCamera;
     [SerializeField] private GameObject _playerUICanvas;
 
@@ -22,13 +21,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.OnTakeDamage += TakeDamage;
         EventManager.OnTakeBullet += ReloadBullet;
     }
 
     private void OnDisable()
     {
-        EventManager.OnTakeDamage -= TakeDamage;
         EventManager.OnTakeBullet -= ReloadBullet;
     }
 
@@ -39,17 +36,16 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-        if (other.gameObject.layer == _collectableLayer)
+        IInteractable collectable = other.GetComponent<IInteractable>();
+        if (collectable != null)
         {
-            IInteractable collectable = other.GetComponent<IInteractable>();
-           collectable?.TakeCollectable();
+            collectable.TakeCollectable();
             Destroy(other.gameObject);
         }
     }
 
 
     private void ReloadBullet(float bulletAmount) => _playerAttackController.Reload(bulletAmount);
-    private void TakeDamage(float damage) => _playerHealthController.TakeDamage(damage);
+    public void TakeDamage(float damage) => _playerHealthController.TakeDamage(damage);
     private void TakeHealthBox(float heathIncreaseAmount) => _playerHealthController.TakeHealthBox(heathIncreaseAmount);
 }
