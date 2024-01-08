@@ -32,7 +32,9 @@ public class PlayerAttackController : MonoBehaviour
         {
             _isShoot = context.ReadValueAsButton();
             if (!_isShoot) return;
-            BulletController bullet = Instantiate(_bulletObject, _bulletSpawnPos.position, Quaternion.identity);
+            BulletController bullet =
+                Instantiate(_bulletObject.gameObject, _bulletSpawnPos.position, Quaternion.identity)
+                    .GetComponent<BulletController>();
             bullet.DamageInit(_playerSettings.BulletDamage);
             bullet.Shoot(transform);
             _bulletMagazine -= 1;

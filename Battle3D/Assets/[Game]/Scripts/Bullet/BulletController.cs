@@ -28,18 +28,9 @@ public class BulletController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Shoot(Transform target = null)
+    public void Shoot(Transform target)
     {
-        if (target == null)
-        {
-            transform.DOLookAt(_targetTransform.transform.position, .0f);
-            Vector3 dir = transform.position - _targetTransform.position;
-            _rb.AddForce(dir.normalized * -25, ForceMode.Impulse);
-        }
-        else
-        {
-            _rb.AddForce(target.forward * 25, ForceMode.Impulse);
-            transform.DORotateQuaternion(target.rotation, .0f);
-        }
+        _rb.AddForce(target.forward * 25, ForceMode.Impulse);
+        transform.DORotateQuaternion(target.rotation, .0f);
     }
 }

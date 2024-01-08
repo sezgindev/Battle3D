@@ -24631,7 +24631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb4d99f56fc31546b46748c1800af69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerSettings: {fileID: 0}
+  PlayerSettings: {fileID: 11400000, guid: 9089668d94ce5644ead6933ee4d27e4e, type: 2}
   _playerUICanvas: {fileID: 1484282872}
 --- !u!114 &8296172668972788775
 MonoBehaviour:

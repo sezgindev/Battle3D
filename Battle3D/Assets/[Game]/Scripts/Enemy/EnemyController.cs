@@ -63,7 +63,7 @@ public class EnemyController : MonoBehaviour
         {
             BulletController bullet = Instantiate(_bulletObject, _bulletSpawnPos.position, Quaternion.identity);
             bullet.DamageInit(EnemySettings.Damage);
-            bullet.Shoot();
+            bullet.Shoot(transform);
             yield return new WaitForSeconds(1.0f);
         }
     }
