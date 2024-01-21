@@ -46,4 +46,9 @@ public class ParticleManager : MonoBehaviour
             _noBulletParticle.transform.position = spawnPos;
         }
     }
+    public void EnemyDieParticle(Vector3 pos)
+    {
+        //TODO: Die particle add
+    }
+
 }

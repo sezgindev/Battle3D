@@ -10,8 +10,6 @@ public class WaveController : MonoBehaviour
 
     [SerializeField] private EnemyController _enemyPrefab;
 
-    [SerializeField] private List<Transform> _waveSpawnGates;
-
     [SerializeField] private float _waveCount;
 
     private float _timer;
@@ -21,8 +19,7 @@ public class WaveController : MonoBehaviour
 
     private void Start()
     {
-        _spawnPos = _waveSpawnGates[(int)Random.Range(0, _waveSpawnGates.Count)];
-        StartCoroutine(WaveSpawn());
+       StartCoroutine(WaveSpawn());
     }
 
     private void Update()
@@ -32,10 +29,14 @@ public class WaveController : MonoBehaviour
         {
             _isSpawnable = true;
             _timer = 0;
-            _spawnPos = _waveSpawnGates[(int)Random.Range(0, _waveSpawnGates.Count)];
-        }
+       }
     }
+    private Vector3 GetRandomSpawnPos()
+    {
+        Vector3 spawnPos = Vector3.zero;
 
+        return spawnPos;
+    }
 
     private IEnumerator WaveSpawn()
     {
@@ -43,7 +44,8 @@ public class WaveController : MonoBehaviour
         {
             if (_isSpawnable)
             {
-                Instantiate(_enemyPrefab, _spawnPos.position, Quaternion.identity);
+                Vector3 spawnPos = GetRandomSpawnPos();
+                Instantiate(_enemyPrefab, spawnPos, Quaternion.identity);
                 _tempWaveCount++;
                 if (_tempWaveCount >= _waveCount)
                 {

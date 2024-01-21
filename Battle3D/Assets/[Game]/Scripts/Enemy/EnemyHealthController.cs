@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,8 +21,8 @@ public class EnemyHealthController : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-        Debug.Log(_health);
         _health -= damage;
+        //TODO: Damage text particle add (Particle anim)
         SetHealthBar();
         if (_health <= 0)
         {
@@ -31,11 +32,14 @@ public class EnemyHealthController : MonoBehaviour, IDamageable
 
     private void SetHealthBar()
     {
-        //TODO:Set Enemy Health Bar
+        var a = Mathf.InverseLerp(100, 0, _health);
+        var b = Mathf.Lerp(1, 0, a);
+        _healthFillImage.DOFillAmount(b, .15f);
     }
 
     private void Die()
     {
-        //TODO:Set Enemy Health Die
+        ParticleManager.Instance.EnemyDieParticle(transform.position);
+        Destroy(this.gameObject);
     }
 }
