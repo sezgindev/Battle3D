@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerHealthController : MonoBehaviour
 {
     [SerializeField] private float _health = 100;
-    [SerializeField] private TextMeshPro _healthText;
+
 
     private void Start()
     {

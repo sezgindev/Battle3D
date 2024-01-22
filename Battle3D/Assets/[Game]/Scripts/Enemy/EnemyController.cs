@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour
     {
         transform.LookAt(_player);
         _agent.SetDestination(_player.position);
-        if (_agent.remainingDistance <= 10.0f)
+        if (_agent.remainingDistance <= 1.0f)
         {
             ChangeState(EnemyStates.Attack);
             _agent.speed = 0;
@@ -51,20 +51,5 @@ public class EnemyController : MonoBehaviour
     {
         if (_enemyState == state) return;
         _enemyState = state;
-        if (_enemyState == EnemyStates.Attack)
-        {
-            StartCoroutine(AttackToPlayer());
-        }
-    }
-
-    private IEnumerator AttackToPlayer()
-    {
-        while (true)
-        {
-            BulletController bullet = Instantiate(_bulletObject, _bulletSpawnPos.position, Quaternion.identity);
-            bullet.DamageInit(EnemySettings.Damage);
-            bullet.Shoot();
-            yield return new WaitForSeconds(1.0f);
-        }
     }
 }

@@ -15,3 +15,4 @@ MonoBehaviour:
   _enemyType: 0
   _health: 250
   _damage: 20
+  _deadSpawnOre: {fileID: 11400000, guid: 2c3f361906cc9f7459d8d9dd34393c25, type: 2}

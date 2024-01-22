@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18cc485e04867c3459d21cd295457716, type: 3}
-  m_Name: BasicEnemy
+  m_Script: {fileID: 11500000, guid: 5813dd4a8c8f2de4c8711900aebf4ff3, type: 3}
+  m_Name: BasicOre
   m_EditorClassIdentifier: 
-  _enemyType: 0
-  _health: 100
-  _damage: 10
-  _deadSpawnOre: {fileID: 11400000, guid: 40785ced232a457419d49a884d4454b9, type: 2}
+  _oreType: 0
+  _xp: 5
+  _oreObjectPrefab: {fileID: 6318383376079235586, guid: cd76a3be1928e6f408b6756393d94a69, type: 3}

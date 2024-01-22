@@ -1452,11 +1452,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waveFrequency: 10
   _enemyPrefab: {fileID: 6390585722972407165, guid: cfeae71083b6c2e40bb2eb7066beba06, type: 3}
-  _waveSpawnGates:
-  - {fileID: 543450651584923131}
-  - {fileID: 1149627675}
-  - {fileID: 1358506305}
-  - {fileID: 2079703522}
   _waveCount: 5
 --- !u!4 &867140184 stripped
 Transform:
@@ -1866,6 +1861,7 @@ Transform:
   - {fileID: 2046145008}
   - {fileID: 1317590833}
   - {fileID: 866851567}
+  - {fileID: 1061568079}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1988,6 +1984,49 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e3c7302a6b4ab944b8a6b01baa66cf4, type: 3}
+--- !u!1 &1061568078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1061568079}
+  - component: {fileID: 1061568080}
+  m_Layer: 0
+  m_Name: OreSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1061568079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061568078}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 986894252}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1061568080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061568078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1febbb0c544aef04ab988b89d7c6a655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1077499706
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24631,7 +24670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb4d99f56fc31546b46748c1800af69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerSettings: {fileID: 0}
+  PlayerSettings: {fileID: 11400000, guid: 9089668d94ce5644ead6933ee4d27e4e, type: 2}
   _playerUICanvas: {fileID: 1484282872}
 --- !u!114 &8296172668972788775
 MonoBehaviour:
@@ -24646,7 +24685,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
-  _healthText: {fileID: 0}
 --- !u!114 &8296172668972788776
 MonoBehaviour:
   m_ObjectHideFlags: 0

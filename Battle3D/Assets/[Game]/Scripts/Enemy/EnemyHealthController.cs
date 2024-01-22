@@ -23,7 +23,7 @@ public class EnemyHealthController : MonoBehaviour, IDamageable
     {
         _health -= damage;
         //TODO: Damage text particle add (Particle anim)
-        SetHealthBar();
+        //  SetHealthBar();
         if (_health <= 0)
         {
             Die();
@@ -40,6 +40,7 @@ public class EnemyHealthController : MonoBehaviour, IDamageable
     private void Die()
     {
         ParticleManager.Instance.EnemyDieParticle(transform.position);
+        EventManager.OnSpawnOre?.Invoke(_enemySettings.GetOre, gameObject.transform.position);
         Destroy(this.gameObject);
     }
 }
