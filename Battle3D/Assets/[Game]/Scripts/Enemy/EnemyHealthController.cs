@@ -40,7 +40,7 @@ public class EnemyHealthController : MonoBehaviour, IDamageable
     private void Die()
     {
         ParticleManager.Instance.EnemyDieParticle(transform.position);
-        EventManager.OnSpawnOre?.Invoke(_enemySettings.GetOre, gameObject.transform.position);
+        EventManager.OnSpawnOre?.Invoke(_enemySettings.EnemyType, gameObject.transform.position);
         Destroy(this.gameObject);
     }
 }

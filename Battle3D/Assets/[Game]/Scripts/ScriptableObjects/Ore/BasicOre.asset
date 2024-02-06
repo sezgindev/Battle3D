@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _oreType: 0
   _xp: 5
-  _oreObjectPrefab: {fileID: 6318383376079235586, guid: cd76a3be1928e6f408b6756393d94a69, type: 3}
+  _oreObjectPrefab: {fileID: -897462893611979365, guid: cd76a3be1928e6f408b6756393d94a69, type: 3}

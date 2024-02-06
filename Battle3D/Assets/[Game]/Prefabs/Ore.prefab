@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6693677912767328440}
   - component: {fileID: 7731382095235317533}
   - component: {fileID: 5525798289653369815}
+  - component: {fileID: -897462893611979365}
   m_Layer: 0
   m_Name: Ore
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-897462893611979365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6318383376079235586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 093ca9d16c40e4645a69fb4a7e40336f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerXp: 0

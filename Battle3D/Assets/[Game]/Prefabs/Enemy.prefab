@@ -2142,8 +2142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e17fea5c86f17684c8fbfbad295264cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletObject: {fileID: 5700165275644148281, guid: 612183b4a5d1fd0438f58401a1fe2653, type: 3}
-  _bulletSpawnPos: {fileID: 7939233746281397197, guid: 38f9bd203ce59c349a2e6de9f174bcfd, type: 3}
   EnemySettings: {fileID: 11400000, guid: eae08322fc7e38e419f3915ab665effd, type: 2}
 --- !u!195 &6505910658554315099
 NavMeshAgent:

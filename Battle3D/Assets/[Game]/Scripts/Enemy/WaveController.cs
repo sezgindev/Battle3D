@@ -16,10 +16,11 @@ public class WaveController : MonoBehaviour
     private bool _isSpawnable = false;
     private Transform _spawnPos;
     private int _tempWaveCount = 0;
+    public float spawnRadius = 6f;
 
     private void Start()
     {
-       StartCoroutine(WaveSpawn());
+        StartCoroutine(WaveSpawn());
     }
 
     private void Update()
@@ -29,11 +30,23 @@ public class WaveController : MonoBehaviour
         {
             _isSpawnable = true;
             _timer = 0;
-       }
+        }
     }
+
     private Vector3 GetRandomSpawnPos()
     {
         Vector3 spawnPos = Vector3.zero;
+        return spawnPos;
+    }
+
+    private Vector3 SpawnObjectsAroundCharacter()
+    {
+        Vector3 spawnPos = Vector3.back;
+        int i = Random.Range(0, 360);
+        float angle = Mathf.Deg2Rad * i;
+        spawnPos = _enemyPrefab.transform.position +
+                   new Vector3(Mathf.Cos(angle) * spawnRadius, 0f, Mathf.Sin(angle) * spawnRadius);
+
 
         return spawnPos;
     }
@@ -44,7 +57,7 @@ public class WaveController : MonoBehaviour
         {
             if (_isSpawnable)
             {
-                Vector3 spawnPos = GetRandomSpawnPos();
+                Vector3 spawnPos = SpawnObjectsAroundCharacter();
                 Instantiate(_enemyPrefab, spawnPos, Quaternion.identity);
                 _tempWaveCount++;
                 if (_tempWaveCount >= _waveCount)
@@ -54,7 +67,7 @@ public class WaveController : MonoBehaviour
                 }
             }
 
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(2.0f);
         }
     }
 }

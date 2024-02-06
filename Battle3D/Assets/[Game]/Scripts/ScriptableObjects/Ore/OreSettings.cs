@@ -9,7 +9,7 @@ public class OreSettings : ScriptableObject
 {
     [SerializeField] private OreTypes _oreType;
     [SerializeField] private int _xp;
-    [SerializeField] private GameObject _oreObjectPrefab;
+    [SerializeField] private OreController _oreObjectPrefab;
     
     public enum OreTypes
     {
@@ -18,7 +18,7 @@ public class OreSettings : ScriptableObject
     }
 
     public OreTypes OreType => _oreType;
-    public GameObject OreObject => _oreObjectPrefab;
+    public OreController OreObject => _oreObjectPrefab;
     public int Xp => _xp;
     
 }

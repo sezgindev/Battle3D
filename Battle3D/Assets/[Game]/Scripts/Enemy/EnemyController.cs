@@ -6,8 +6,6 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private BulletController _bulletObject;
-    [SerializeField] private Transform _bulletSpawnPos;
     private NavMeshAgent _agent;
     private Transform _player;
     private EnemyStates _enemyState;
