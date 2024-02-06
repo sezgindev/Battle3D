@@ -7,15 +7,15 @@ using UnityEngine.UI;
 
 public class EnemyHealthController : MonoBehaviour, IDamageable
 {
-    private EnemyController _enemyController;
+    private IEnemy _enemyController;
     private EnemySettings _enemySettings;
     private float _health;
     [SerializeField] private Image _healthFillImage;
 
     private void Awake()
     {
-        _enemyController = GetComponent<EnemyController>();
-        _enemySettings = _enemyController.EnemySettings;
+        _enemyController = GetComponent<IEnemy>();
+        _enemySettings = _enemyController.GetEnemySettings();
         _health = _enemySettings.Health;
     }
 

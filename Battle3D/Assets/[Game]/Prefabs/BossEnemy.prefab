@@ -112,7 +112,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6682663540458325227, guid: 2da75001cfc916e45b8c656587977e84, type: 3}
+  - {fileID: 2100000, guid: cb59fde3e8d84044b85da207d0efbc2b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2102,12 +2102,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6974975107694921421}
-  - component: {fileID: 6390585722972407165}
   - component: {fileID: 6505910658554315099}
   - component: {fileID: -4210286112580394734}
   - component: {fileID: -45825014519443456}
+  - component: {fileID: 6939081608145944718}
   m_Layer: 10
-  m_Name: Enemy
+  m_Name: BossEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2130,19 +2130,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6390585722972407165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7748379710713322615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e17fea5c86f17684c8fbfbad295264cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemySettings: {fileID: 11400000, guid: eae08322fc7e38e419f3915ab665effd, type: 2}
 --- !u!195 &6505910658554315099
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2192,6 +2179,19 @@ CapsuleCollider:
   m_Height: 1.8534856
   m_Direction: 1
   m_Center: {x: 0.024619758, y: 0.8945186, z: 0}
+--- !u!114 &6939081608145944718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7748379710713322615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67135c54439e2e9418244a145ef73f07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemySettings: {fileID: 11400000, guid: 17a1a45470501af45b32c226f299779f, type: 2}
 --- !u!1 &8108400664195731885
 GameObject:
   m_ObjectHideFlags: 0

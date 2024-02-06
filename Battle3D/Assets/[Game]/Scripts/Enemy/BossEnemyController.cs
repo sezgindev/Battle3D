@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour
+public class BossEnemyController : MonoBehaviour, IEnemy
 {
     private NavMeshAgent _agent;
     private Transform _player;
     private EnemyStates _enemyState;
-    public EnemySettings EnemySettings;
+    [SerializeField] private EnemySettings _enemySettings;
 
     private enum EnemyStates
     {
@@ -29,7 +29,14 @@ public class EnemyController : MonoBehaviour
         FollowPlayer();
     }
 
-    private void FollowPlayer()
+    public void Initialize()
+    {
+        _enemyState = EnemyStates.Follow;
+    }
+
+    public EnemySettings GetEnemySettings() => _enemySettings;
+
+    public void FollowPlayer()
     {
         transform.LookAt(_player);
         _agent.SetDestination(_player.position);
